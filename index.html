@@ -1,0 +1,516 @@
+<html>
+  <head>
+    <title>FileWriter</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' id='fa' type='text/css' media='all'   href="font-awesome-4.3.0/css/font-awesome.min.css"/>
+
+    <script type='text/javascript' charset='utf-8' src='js/jquery-2.1.3.min.js'></script>
+
+    <link rel='stylesheet' id='jquerymobile-css' type='text/css' media='all'   href='jqmobile/jquery.mobile-1.4.5.min.css'/>  
+    <script src='jqmobile/jquery.mobile-1.4.5.min.js'></script>
+
+    <!--<script type='text/javascript' charset='utf-8' src='cordova.js'></script>-->
+    <script type='text/javascript' charset='utf-8'>
+        //variables
+        var fileDat = 'backupMINEDU.txt';
+        var fileKey = 0;
+        var fileFec = '';
+        // Wait for device API libraries to load
+        //
+        document.addEventListener('deviceready', onDeviceReady, false);
+        // device APIs are available
+        //
+        function onDeviceReady() {
+
+
+        }
+
+
+/*
+        $('[id^=btnBack]').live(function(){
+            var id = $(this).attr('id');
+            alert(id);
+
+            return false;
+        });
+*/
+    </script>
+    <style type="text/css">
+        /*banner minedu*/
+        .ui-page .hpage1 {
+          background: url('images/logo_ministerio_educacion.png') no-repeat;
+          background-color: #58585a;
+          background-position: 0px 0px;
+        }    
+        /*size del icono de menu*/
+        .ui-listview > .ui-li-has-icon > img:first-child, .ui-listview > .ui-li-has-icon > .ui-btn > img:first-child {
+            left: 0.625em;
+            max-height: 32em;
+            max-width: 32em;
+            position: absolute;
+            top: 0.9em;
+        }
+        /*alineacion izquierda del texto del menu*/
+        .ui-listview > .ui-li-has-icon > .ui-btn, .ui-listview > .ui-li-static.ui-li-has-icon {
+            min-height: 1.25em;
+            padding-left: 3.2em;
+        }
+		/*separacion interna del menu*/
+		.ui-listview > li p {
+			display: block;
+			font-size: 0.75em;
+			font-weight: 400;
+			margin: 0.1em 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			opacity: 0.7;
+		}		
+        /*alineacion de botones dentro de listview*/          
+        .ui-listview .ui-btn-aside {
+          position: absolute;
+          top: 3em;
+          right: 3.333em;
+          margin: 0;
+          text-align: right;
+          width: 240px;
+        }        
+        /*color de flecha de botones agrupados*/
+        .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{
+            background-color: cornflowerblue;    
+        }
+        /*alineacion texto al lado imagen*/
+        .ui-listview>li h2{
+            margin-left: 37px;
+            margin-top: -25px;
+        }
+        .ui-listview>li a i{
+            color:crimson;
+        }
+        /*alineacion controles de menu*/
+        .ui-menu-custom>ul li a i{
+            width: 16px;
+        }         
+        .ui-menu-custom>ul li a h10{
+            position: absolute;    
+            margin-top: 2px;
+            margin-left: 15px;
+        }        
+        
+        .ui-menu-custom>ul li a p{
+            margin-top: -7px;
+            margin-left: 32px;
+        }
+        /*tabla de niveles*/
+        .ui-table-custom >li h2{
+            margin-left: 37px;
+            margin-top: -25px;
+        }
+        .ui-listview>li i{
+            color:crimson;
+        }                
+        ul li .ui-controlgroup{
+            margin-top: -45px;
+            text-align: right;
+        }
+    </style>
+  </head>
+  <body>
+    <!--ini page01-->
+    <div data-role='page' id="pageEncuesta01">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Principal</h1>
+        </div>        
+        <div id='content-page' role='main' class='ui-content ui-menu-custom'>
+            <!--
+            <div class="ui-body ui-body-a ui-corner-all">
+                <h5>Principal</h5>
+            </div>
+            -->
+            <!--<input type='button' data-icon='check' data-icon-pos='right' value='Prueba' data-theme='b'>-->
+            <ul data-role="listview" data-inset="true">
+                <!--
+                <li><a href="#pageEncuesta02"><img src="images/page_edit.png" alt="France" class="ui-li-icon ui-corner-none">Nueva Encuesta<br/><p>Iniciar el registro de una nueva encuesta</p></a></li>
+                <li><a href="#pageEncuesta03"><img src="images/tick.png" alt="France" class="ui-li-icon ui-corner-none">Revisar Encuestas<br/><p>Continuar con el registro de una encuesta</p></a></li>
+				<li><a href="#"><img src="images/send.png" alt="France" class="ui-li-icon ui-corner-none">Transmitir a la Red<br/><p>Envia informacion de las encuestas a la Red MINEDU
+                <li><a href="#"><img src="images/database_go.png" alt="France" class="ui-li-icon ui-corner-none">Actualizar Base de Datos<br/><p>Obtiene informacion de los servidores de MINEDU</p></a></li>
+                <li><a href="#"><img src="images/digital_signature.png" alt="France" class="ui-li-icon ui-corner-none">Copia de Seguridad<br/><p>Permite realizar una copia de las encuestas registradas</p></a></li>
+                -->
+                <li><a href="#pageEncuesta02"><i class="fa fa-tablet fa-2x"></i><h10>Nueva Encuesta</h10><br/><p>Iniciar el registro de una nueva encuesta</p></a></li>
+                <li><a href="#pageEncuesta03"><i class="fa fa-pencil fa-2x"></i><h10>Revisar Encuesta</h10><br/><p>Continuar con el registro de una encuesta</p></a></li>
+                <li><a href="#pageEncuesta02"><i class="fa fa-cloud-upload fa-2x"></i><h10>Transmitir a la Red</h10><br/><p>Envia informacion de las encuestas a la Red MINEDU</p></a></li>
+                <li><a href="#pageEncuesta07"><i class="fa fa-database fa-2x"></i><h10>Actualizar Base Datos</h10><br/><p>Obtiene informacion de los servidores de MINEDU</p></a></li>
+                <li><a href="#pageEncuesta06"><i class="fa fa-download fa-2x"></i><h10>Copia de Seguridad</h10><br/><p>Permite realizar una copia de las encuestas registradas</p></a></li>
+            </ul>
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>    
+    <!--ini page02-->
+    <div data-role='page' id="pageEncuesta02">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Encuesta</h1>
+        </div>                
+        <div id='content-page' role='main' class='ui-content ui-menu-custom'>
+            <!--<input type='button' data-icon='check' data-icon-pos='right' value='Prueba' data-theme='b'>-->
+            <ul data-role="listview" data-inset="true">
+                <!--
+                <li><a href="#"><img src="images/listcheck.png" alt="France" class="ui-li-icon ui-corner-none"> Marco</a></li>
+                <li><a href="#"><img src="images/form_wizard.png" alt="France" class="ui-li-icon ui-corner-none"> Encuesta la Director</a></li>
+                <li><a href="#"><img src="images/database_go.png" alt="France" class="ui-li-icon ui-corner-none"> Observaciones</a></li>
+                <li><a href="#"><img src="images/save_close.png" alt="France" class="ui-li-icon ui-corner-none"> Encuesta por Nivel</a></li>
+                <li><a href="#"><img src="images/save_close.png" alt="France" class="ui-li-icon ui-corner-none"> Observaciones</a></li>
+                -->
+                <li><a href="#pageEncuesta01"><i class="fa fa-map-marker fa-2x"></i><h10>Registro Inicial</h10><br/><p>Registro inicial y ubicacion geografica de la IE</p></a></li>
+                <li><a href="#pageEncuesta01"><i class="fa fa-street-view fa-2x"></i><h10>Encuesta al Director</h10><br/><p>Preguntas al Director(es) de la IE</p></a></li>
+                <li><a href="#pageEncuesta01"><i class="fa fa-pencil fa-2x"></i><h10>Observaciones</h10><br/><p>Observaciones a la encuesta realizada al director(es)</p></a></li>
+                <li><a href="#pageEncuesta04"><i class="fa fa-building fa-2x"></i><h10>Encuesta por Nivel</h10><br/><p>Encuestas realizadas a los diversos niveles de la IE</p></a></li>
+                <li><a href="#pageEncuesta01"><i class="fa fa-pencil fa-2x"></i><h10>Observaciones</h10><br/><p>Observaciones a la encuesta realizada por Niveles</p></a></li>
+            </ul>
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>
+    <!--ini page03-->
+    <div data-role='page' id="pageEncuesta03">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Revisar Encuesta</h1>
+        </div>
+        <div id='content-page' role='main' class='ui-content'>
+            <!--
+            <div class="ui-body ui-body-a ui-corner-all">
+                <h5>Presione Continuar para volver a editar la Encuesta</h5>
+            </div>            
+            <table data-role="table" id="phone-table" data-mode="columntoggle" data-column-btn-text="Columnas" data-column-btn-theme="a" class="phone-compare ui-shadow table-stroke">
+                  <thead>
+                    <tr>
+                        <th class="label">Local<br/> Educativo</th>
+                        <th class="label" data-priority="1">Fecha<br/> Hora</th>
+                        <th class="label" data-priority="2">Estado<br/> Encuesta</th>
+                        <th class="label">Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th style="background-color:white; color:black;" class="label"><span style="color:red;">279653</span><br>0040 SANTIAGO CASSINELLI CHIAPPE</th>
+                        <th style="background-color:white; color:black;" class="label">2015/05/22<br>16:42:56</th>
+                        <th style="background-color:white; color:black;" class="label">PENDIENTE</th>
+                        <td><input type="button" value="Continuar"></td>
+                    </tr>
+
+                    <tr>
+                        <th style="background-color:white; color:black;" class="label"><span style="color:red;">294979</span><br>FE Y ALEGRIA 53</th>
+                        <th style="background-color:white; color:black;" class="label">2015/05/22<br>16:42:56</th>
+                        <th style="background-color:white; color:black;" class="label">PENDIENTE</th>
+                        <td><input type="button" value="Continuar"></td>
+                    </tr>
+
+                    <tr>
+                        <th style="background-color:white; color:black;" class="label"><span style="color:red;">047700</span><br>GREGORIO MARTINELLY</th>
+                        <th style="background-color:white; color:black;" class="label">2015/05/22<br>16:42:56</th>
+                        <th style="background-color:white; color:black;" class="label">PENDIENTE</th>
+                        <td><input type="button" value="Continuar"></td>
+                    </tr>
+
+                    <tr>
+                        <th style="background-color:white; color:black;" class="label"><span style="color:red;">049011</span><br>LIBERTADORES DE AMERICA</th>
+                        <th style="background-color:white; color:black;" class="label">2015/05/22<br>16:42:56</th>
+                        <th style="background-color:white; color:black;" class="label">PENDIENTE</th>
+                        <td><input type="button" value="Continuar"></td>
+                    </tr>
+
+                    <tr>
+                        <th style="background-color:white; color:black;" class="label"><span style="color:red;">307458</span><br>1235 UNION LATINOAMERICANA</th>
+                        <th style="background-color:white; color:black;" class="label">2015/05/22<br>16:42:56</th>
+                        <th style="background-color:white; color:black;" class="label">PENDIENTE</th>
+                        <td><input type="button" value="Continuar"></td>
+                    </tr>
+
+                                                            
+                    </tbody>
+                </table>
+            -->
+
+            <!--
+            <div class="ui-corner-all custom-corners">
+                <div class="ui-bar ui-bar-a">
+                    <h3>Seleccione la Encuesta que desea revisar</h3>
+                </div>
+                <div class="ui-body ui-body-a">
+
+                </div>
+            </div>
+            -->
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">LUNES, 18 Octubre 2014<span class="ui-li-count">2</span></li>
+                        <li>
+                            <a href="#pageEncuesta02">
+                                <i class="fa fa-pencil-square-o fa-2x"></i>
+                                <h2>275754</h2>
+                                <p><strong>10040 SANTIAGO CASSINELLI CHIAPPE</strong></p>
+                                <p>Niveles Activos: Inicial, Primaria, Secundaria</p>
+                                <p class="ui-li-aside"><strong>11:24</strong>AM</p>
+                                <!--
+                                <p class="ui-btn-aside">
+                                    <button class="ui-btn ui-btn-inline">Button</button>
+                                    <button class="ui-btn ui-btn-inline">Button</button>  
+                                </p>
+                                -->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pageEncuesta02">
+                                <i class="fa fa-pencil-square-o fa-2x"></i>
+                                <h2>279653</h2>
+                                <p><strong>JESUS NAZARENO CAUTIVO</strong></p>
+                                <p>Niveles Activos: Inicial, Primaria, Secundaria</p>
+                                <p class="ui-li-aside"><strong>02:18</strong>PM</p>
+                            </a>
+                        </li>
+                        <li data-role="list-divider">JUEVES, 21 Octubre 2014<span class="ui-li-count">3</span></li>
+                        <li>
+                            <a href="#pageEncuesta02">
+                                <i class="fa fa-pencil-square-o fa-2x"></i>
+                                <h2>294979</h2>
+                                <p><strong>CABO EJERCITO PERUANO SANTIAGO TAPULLIMA PASHANASI</strong></p>
+                                <p>Niveles Activos: Primaria</p>
+                                <p class="ui-li-aside"><strong>08:48</strong>AM</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pageEncuesta02">
+                                <i class="fa fa-pencil-square-o fa-2x"></i>
+                                <h2>298779</h2>
+                                <p><strong>COLEGIO MAYOR SECUNDARIO PRESIDENTE DEL PERU</strong></p>
+                                <p>Niveles Activos: Secundaria</p>
+                                <p class="ui-li-aside"><strong>11:30</strong>AM</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pageEncuesta02">
+                                <i class="fa fa-pencil-square-o fa-2x"></i>
+                                <h2>296587</h2>
+                                <p><strong>ESCUELA HOGAR COMUNITARIA REGIONAL SAGRADA FAMILIA</strong></p>
+                                <p>Niveles Activos: Primaria</p>
+                                <p class="ui-li-aside"><strong>04:00</strong>PM</p>
+                            </a>
+                        </li>                                                
+                    </ul>
+
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>
+    <!--ini page04-->
+    <div data-role='page' id="pageEncuesta04">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a" style="overflow:hidden;">
+            <h1 role="heading">Encuesta por Nivel</h1>
+            <!--
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" class="ui-link ui-btn ui-btn-active">Listado de Secciones</a></li>
+                    <li><a href="#" class="ui-link ui-btn">Nueva Encuesta</a></li>
+                </ul>
+            </div>
+            -->
+        </div>                
+        <div id='content-page' role='main' class='ui-content ui-menu-custom'>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#pageEncuesta01"><i class="fa fa-building fa-2x"></i><h10>Nueva Encuesta</h10><br/><p>Registrar una nueva encuesta por Nivel en la IE</p></a></li>
+            </ul>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">INICIAL<span class="ui-li-count">1</span></li>
+                        <li>
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                            <h2>POLLITOS</h2>
+                            <p><strong>TURNO MANANA</strong></p>
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <a href="#" class="ui-btn ui-corner-all">Revisar</a>
+                                <a href="#" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-right">Borrar</a>
+                            </div>
+                        </li>                        
+                        <li data-role="list-divider">PRIMARIA<span class="ui-li-count">2</span></li>
+                        <li>
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                            <h2>5-A</h2>
+                            <p><strong>TURNO TARDE</strong></p>
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <a href="#" class="ui-btn ui-corner-all">Revisar</a>
+                                <a href="#" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-right">Borrar</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                            <h2>5-B</h2>
+                            <p><strong>TURNO TARDE</strong></p>
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <a href="#" class="ui-btn ui-corner-all">Revisar</a>
+                                <a href="#" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-right">Borrar</a>
+                            </div>
+                        </li>
+                        <li data-role="list-divider">SECUNDARIA<span class="ui-li-count">2</span></li>
+                        <li>
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                            <h2>3-A</h2>
+                            <p><strong>TURNO MANANA</strong></p>
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <a href="#" class="ui-btn ui-corner-all">Revisar</a>
+                                <a href="#" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-right">Borrar</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                            <h2>3-B</h2>
+                            <p><strong>TURNO MANANA</strong></p>
+                            <!--<p class="ui-li-aside"><strong>PENDIENTE</strong></p>-->
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <a href="#" class="ui-btn ui-corner-all">Revisar</a>
+                                <a href="#" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-right">Borrar</a>
+                            </div>                            
+                        </li>                                                                        
+                    </ul>
+
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>    
+    <!--ini page05-->
+    <div data-role='page' id="pageEncuesta05">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Transmitir a la Red</h1>
+        </div>
+        <div id='content-page' role='main' class='ui-content'>
+
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider">Pendientes de Envio<span class="ui-li-count">2</span></li>
+				<li>
+					<a href="#pageEncuesta02">
+						<i class="fa fa-cloud-upload fa-2x"></i>
+						<h2>275754</h2>
+						<p><strong>10040 SANTIAGO CASSINELLI CHIAPPE</strong></p>
+						<p>Niveles Activos: Inicial, Primaria, Secundaria</p>
+						<!--<p class="ui-li-aside"><strong>11:24</strong>AM</p>-->
+					</a>
+				</li>
+				<li>
+					<a href="#pageEncuesta02">
+						<i class="fa fa-cloud-upload fa-2x"></i>
+						<h2>279653</h2>
+						<p><strong>JESUS NAZARENO CAUTIVO</strong></p>
+						<p>Niveles Activos: Inicial, Primaria, Secundaria</p>
+						<!--<p class="ui-li-aside"><strong>02:18</strong>PM</p>-->
+					</a>
+				</li>
+				<li data-role="list-divider">Enviados<span class="ui-li-count">3</span></li>
+				<li>
+					<i class="fa fa-cloud fa-2x"></i>
+					<h2>294979</h2>
+					<p><strong>CABO EJERCITO PERUANO SANTIAGO TAPULLIMA PASHANASI</strong></p>
+					<p>Niveles Activos: Primaria</p>
+					<p class="ui-li-aside">20-10-2014 <strong>08:48</strong>AM</p>
+				</li>
+				<li>
+					<i class="fa fa-cloud fa-2x"></i>
+					<h2>298779</h2>
+					<p><strong>COLEGIO MAYOR SECUNDARIO PRESIDENTE DEL PERU</strong></p>
+					<p>Niveles Activos: Secundaria</p>
+					<p class="ui-li-aside">20-10-2014 <strong>11:30</strong>AM</p>
+				</li>
+				<li>
+					<i class="fa fa-cloud fa-2x"></i>
+					<h2>296587</h2>
+					<p><strong>ESCUELA HOGAR COMUNITARIA REGIONAL SAGRADA FAMILIA</strong></p>
+					<p>Niveles Activos: Primaria</p>
+					<p class="ui-li-aside">21-10-2014 <strong>04:00</strong>PM</p>
+				</li>                                                
+			</ul>
+
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>
+    <!--ini page06-->
+    <div data-role='page' id="pageEncuesta06">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Copia de Seguridad</h1>
+        </div>
+        <div id='content-page' role='main' class='ui-content'>
+
+            <div class="ui-body ui-body-a ui-corner-all">
+                Seleccione los registros a los que desee generar un respaldo
+            </div>
+            <input type='button' data-icon='check' data-iconpos='right' value='Encuesta 23652' data-theme='a'>
+			<input type='button' data-icon='check' data-iconpos='right' value='Encuesta 63258' data-theme='a'>
+			<input type='button' data-icon='check' data-iconpos='right' value='Encuesta 21458' data-theme='a'>
+			<input type='button' data-icon='check' data-iconpos='right' value='Encuesta 96587' data-theme='a'>
+			<input type='button' data-icon='check' data-iconpos='right' value='Encuesta 74569' data-theme='a'>
+			<input type='button' data-icon='' data-iconpos='right' value='Encuesta 32589' data-theme='a'>
+			<input type='button' data-icon='' data-iconpos='right' value='Encuesta 21458' data-theme='a'>
+			
+
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Backup: Storage/Emulated/0/MINEDU/bkYYYMMDD_*.BKP</h4>
+        </div>
+    </div>
+    <!--ini page07-->
+    <div data-role='page' id="pageEncuesta07">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Actualizacion de BD</h1>
+        </div>
+        <div id='content-page' role='main' class='ui-content'>
+
+            <div class="ui-body ui-body-a ui-corner-all">
+                Se han encontrado actualizaciones pendientes
+            </div>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+							<a href="#pageEncuesta01">
+								<i class="fa fa-database fa-2x"></i>
+								<h2>Actualizacion v.2.2</h2>
+								<p><strong>Actualizacion de Base de Datos v.2.2</strong></p>
+								<p>Actualizacion de nuevas preguntas de la encuesta</p>
+								<!--<p class="ui-li-aside"><strong>02:18</strong>PM</p>-->
+							</a>
+                        </li>                                                                                              
+                    </ul>			
+			
+
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>
+	
+	
+  </body>
+</html>
