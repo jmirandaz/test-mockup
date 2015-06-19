@@ -39,7 +39,7 @@
     <style type="text/css">
         /*banner minedu*/
         .ui-page .hpage1 {
-          background: url('images/logo.png') no-repeat;
+          /*background: url('images/logo.png') no-repeat;*/
           background-color: #58585a;
           background-position: 0px 0px;
         }    
@@ -114,6 +114,11 @@
             margin-top: -45px;
             text-align: right;
         }
+        /*secciones*/
+        #groupSeccion .ui-checkbox{
+            width: 50px;
+
+        }
     </style>
   </head>
   <body>
@@ -170,6 +175,7 @@
                 <li><a href="#"><img src="images/save_close.png" alt="France" class="ui-li-icon ui-corner-none"> Observaciones</a></li>
                 -->
                 <li><a href="#pageEncuesta01"><i class="fa fa-map-marker fa-2x"></i><h10>Registro Inicial</h10><br/><p>Registro inicial y ubicacion geografica de la IE</p></a></li>
+                <li><a href="#pageEncuesta08"><i class="fa fa-flask fa-2x"></i><h10>Muestra</h10><br/><p>Ingreso de grados por nivel educativo para seleccionar muestra</p></a></li>
                 <li><a href="#pageEncuesta01"><i class="fa fa-street-view fa-2x"></i><h10>Encuesta al Director</h10><br/><p>Preguntas al Director(es) de la IE</p></a></li>
                 <li><a href="#pageEncuesta01"><i class="fa fa-pencil fa-2x"></i><h10>Observaciones</h10><br/><p>Observaciones a la encuesta realizada al director(es)</p></a></li>
                 <li><a href="#pageEncuesta04"><i class="fa fa-building fa-2x"></i><h10>Encuesta por Nivel</h10><br/><p>Encuestas realizadas a los diversos niveles de la IE</p></a></li>
@@ -510,7 +516,91 @@
             <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
         </div>
     </div>
-	
+    <!--ini page08-->
+    <div data-role='page' id="pageEncuesta08">
+        <div data-role='header' class="hpage1 ui-header ui-bar-b" data-theme="b">
+            <h1 role="heading"></h1>
+        </div>
+        <div data-role='header' class="ui-header" data-theme="a">
+            <h1 role="heading">Seleccion de Muestra</h1>
+        </div>
+        <div id='content-page' role='main' class='ui-content'>
+
+            <div class="ui-body ui-body-a ui-corner-all">
+                Seleccione los registros a los que desee generar un respaldo
+            </div>
+            
+            <!--<div class="ui-field-contain">-->
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>Nivel</legend>
+                <input type="radio" name="rbtNivel" id="rbtNivela">
+                <label for="rbtNivela">Primaria</label>
+                <input type="radio" name="rbtNivel" id="rbtNivelb">
+                <label for="rbtNivelb">Secundaria</label>                    
+            </fieldset>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>Turno</legend>
+                <input type="radio" name="rbtTurno" id="rbtTurnoa">
+                <label for="rbtTurnoa">Manana</label>
+                <input type="radio" name="rbtTurno" id="rbtTurnob">
+                <label for="rbtTurnob">Tarde</label>                    
+                <input type="radio" name="rbtTurno" id="rbtTurnoc">
+                <label for="rbtTurnoc">Noche</label>                                    
+            </fieldset>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>Grado</legend>
+                <input type="radio" name="rbtGrado" id="rbtGradoa">
+                <label for="rbtGradoa">1ero</label>
+                <input type="radio" name="rbtGrado" id="rbtGradob">
+                <label for="rbtGradob">2do</label>                    
+                <input type="radio" name="rbtGrado" id="rbtGradoc">
+                <label for="rbtGradoc">3er</label>
+                <input type="radio" name="rbtGrado" id="rbtGradod">
+                <label for="rbtGradod">4to</label>                
+                <input type="radio" name="rbtGrado" id="rbtGradoe">
+                <label for="rbtGradoe">5er</label>                
+                <input type="radio" name="rbtGrado" id="rbtGradof">
+                <label for="rbtGradof">6to</label>                
+            </fieldset>            
+            <fieldset data-role="controlgroup" data-type="horizontal" id="groupSeccion">
+                <legend>Seccion</legend>
+                <input type="checkbox" name="chkSeccion01" id="chkSeccion01"><label for="chkSeccion01">A</label>
+                <input type="checkbox" name="chkSeccion02" id="chkSeccion02"><label for="chkSeccion02">B</label>
+                <input type="checkbox" name="chkSeccion03" id="chkSeccion03"><label for="chkSeccion03">C</label>
+                <input type="checkbox" name="chkSeccion04" id="chkSeccion04"><label for="chkSeccion04">D</label>
+                <input type="checkbox" name="chkSeccion05" id="chkSeccion05"><label for="chkSeccion05">E</label>
+                <input type="checkbox" name="chkSeccion06" id="chkSeccion06"><label for="chkSeccion06">F</label>
+                <input type="checkbox" name="chkSeccion07" id="chkSeccion07"><label for="chkSeccion07">G</label>
+                <input type="checkbox" name="chkSeccion08" id="chkSeccion08"><label for="chkSeccion08">H</label>
+                <input type="checkbox" name="chkSeccion09" id="chkSeccion09"><label for="chkSeccion09">I</label>
+                <input type="checkbox" name="chkSeccion10" id="chkSeccion10"><label for="chkSeccion10">J</label>
+                <input type="checkbox" name="chkSeccion11" id="chkSeccion11"><label for="chkSeccion11">K</label>
+                <input type="checkbox" name="chkSeccion12" id="chkSeccion12"><label for="chkSeccion12">L</label>
+                <input type="checkbox" name="chkSeccion13" id="chkSeccion13"><label for="chkSeccion13">M</label>
+                <input type="checkbox" name="chkSeccion14" id="chkSeccion14"><label for="chkSeccion14">N</label>
+                <input type="checkbox" name="chkSeccion15" id="chkSeccion15"><label for="chkSeccion15">O</label>
+                <input type="checkbox" name="chkSeccion16" id="chkSeccion16"><label for="chkSeccion16">P</label>
+                <input type="checkbox" name="chkSeccion17" id="chkSeccion17"><label for="chkSeccion17">Q</label>
+                <input type="checkbox" name="chkSeccion18" id="chkSeccion18"><label for="chkSeccion18">R</label>
+                <input type="checkbox" name="chkSeccion19" id="chkSeccion19"><label for="chkSeccion19">S</label>
+                <input type="checkbox" name="chkSeccion20" id="chkSeccion20"><label for="chkSeccion20">T</label>
+                <input type="checkbox" name="chkSeccion21" id="chkSeccion21"><label for="chkSeccion21">U</label>
+                <input type="checkbox" name="chkSeccion22" id="chkSeccion22"><label for="chkSeccion22">V</label>
+                <input type="checkbox" name="chkSeccion23" id="chkSeccion23"><label for="chkSeccion23">W</label>
+                <input type="checkbox" name="chkSeccion24" id="chkSeccion24"><label for="chkSeccion24">X</label>
+                <input type="checkbox" name="chkSeccion25" id="chkSeccion25"><label for="chkSeccion25">Y</label>
+                <input type="checkbox" name="chkSeccion26" id="chkSeccion26"><label for="chkSeccion26">Z</label>
+            </fieldset>
+
+            <!--</div>-->
+
+        </div>
+        <div data-role='footer'>
+            <h4 class="ui-title" role="heading" aria-level="1">Sistema de Monitoreo</h4>
+        </div>
+    </div>
+
+
 	
   </body>
 </html>
